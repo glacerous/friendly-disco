@@ -10,6 +10,8 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final AuthController controller = Get.find<AuthController>();
+  // [ENABLE GIMMICK WARNA] Uncomment untuk state warna reaktif tanpa controller baru:
+  // final Rx<Color> _accentColor = Colors.redAccent.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,28 @@ class ProfilePage extends StatelessWidget {
                 style: TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 32),
+              // [ENABLE JUMLAH FAVORIT] Tambah import favorite_controller.dart, lalu uncomment:
+              // Obx(() => Text('Total Favorit: ${Get.find<FavoriteController>().favorites.length}')),
+              // [ENABLE THEME TOGGLE] Uncomment tombol ganti Dark/Light mode:
+              // IconButton(
+              //   icon: const Icon(Icons.brightness_6),
+              //   onPressed: () => Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark),
+              // ),
+              // [ENABLE GIMMICK WARNA] Uncomment 3 lingkaran warna + bungkus ElevatedButton di bawah dengan Obx(() => ...):
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [Colors.redAccent, Colors.blue, Colors.green]
+              //       .map((c) => GestureDetector(
+              //             onTap: () => _accentColor.value = c,
+              //             child: Padding(
+              //               padding: const EdgeInsets.symmetric(horizontal: 6),
+              //               child: CircleAvatar(radius: 16, backgroundColor: c),
+              //             ),
+              //           ))
+              //       .toList(),
+              // ),
+              // const SizedBox(height: 16),
+              // Ganti backgroundColor ElevatedButton dengan `_accentColor.value` di dalam Obx()
               SizedBox(
                 width: 200,
                 height: 45,
@@ -47,6 +71,14 @@ class ProfilePage extends StatelessWidget {
                     foregroundColor: Colors.white,
                   ),
                   onPressed: controller.logout,
+                  // [ENABLE LOGOUT DIALOG] Ganti onPressed di atas dengan:
+                  // onPressed: () => Get.defaultDialog(
+                  //   title: 'Logout',
+                  //   middleText: 'Yakin ingin keluar?',
+                  //   textConfirm: 'Ya',
+                  //   textCancel: 'Batal',
+                  //   onConfirm: () { Get.back(); controller.logout(); },
+                  // ),
                   child: const Text('Logout'),
                 ),
               ),

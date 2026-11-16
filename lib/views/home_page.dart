@@ -52,6 +52,7 @@ class HomePage extends StatelessWidget {
                 if (controller.isLoading) {
                   return const Center(child: CircularProgressIndicator());
                 }
+                // [ENABLE REFRESH] Bungkus GridView/ListView dengan RefreshIndicator(onRefresh: () async => controller.onInit(), child: ...)
                 return GridView.builder(
                   itemCount: controller.items.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
