@@ -39,8 +39,14 @@ class ItemModel extends HiveObject {
     required this.summary,
   });
 
+  // Cek bentuk JSON di browser sebelum ubah fromJson:
+  // - Flat string ("image": "https://...") -> json['image'] ?? ''
+  // - Nested Map ("image": {"medium": "..."}) -> json['image']?['medium'] ?? ''
+  // - List item ("images": ["..."]) -> json['images']?[0] ?? ''
+  // - List semua ("genres": ["Drama"]) -> List<String>.from(json['genres'] ?? [])
+  // - Angka desimal/campur (int/double) -> (json['rating'] as num?)?.toDouble() ?? 0.0
   factory ItemModel.fromJson(Map<String, dynamic> json) {
-    final rawSummary = (json['summary'] ?? '') as String;
+    final rawSummary = (json['summary'] ?? '') as String; // bersihkan tag HTML
     return ItemModel(
       id: json['id'] ?? 0,
       // Contoh jika API pakai 'title': json['title'] ?? 'No Title'
