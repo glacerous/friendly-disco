@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controllers/detail_controller.dart';
+import '../controllers/favorite_controller.dart';
+
+// =============================================================================
+// DETAIL PAGE (Modul 5 hal. 94-95, Modul 8 hal. 174-176, 179)
+// =============================================================================
+
+class DetailPage extends StatelessWidget {
+  DetailPage({super.key});
+
+  final DetailController controller = Get.find<DetailController>();
+  final FavoriteController favController = Get.find<FavoriteController>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Detail')),
+      body: Obx(() {
+        if (controller.isLoading || controller.item == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        final item = controller.item!;
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              item.image.isNotEmpty
+                  ? Image.network(
+                      item.image,
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.cover,
+                    )
+                  : const SizedBox(
+                      height: 200,
+                      child: Center(child: Icon(Icons.image, size: 64)),
+                    ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            item.title,
+                            style: const TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Obx(() {
+                          final isFav = favController.isFavorite(item.id);
+                          return IconButton(
+                            icon: Icon(
+                              isFav ? Icons.favorite : Icons.favorite_border,
+                              color: isFav ? Colors.redAccent : Colors.grey,
+                              size: 28,
+                            ),
+                            onPressed: () => favController.toggleFavorite(item),
+                          );
+                        }),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text('⭐ ${item.rating}', style: const TextStyle(fontSize: 16)),
+                    const SizedBox(height: 8),
+                    Text(
+                      item.genres.isNotEmpty ? item.genres.join(', ') : '-',
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Overview',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      item.summary.isNotEmpty
+                          ? item.summary
+                          : 'Tidak ada deskripsi.',
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
+    );
+  }
+}
