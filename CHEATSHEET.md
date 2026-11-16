@@ -12,7 +12,7 @@ flutter create nama_project
 
 # Tambah package per kelompok modul (supaya gampang copy per kebutuhan)
 flutter pub add get http shared_preferences hive hive_flutter
-flutter pub add flutter_local_notifications:^19.0.0 timezone:^0.10.0 geolocator:^13.0.0
+flutter pub add flutter_local_notifications:^19.0.0 timezone:^0.10.0 geolocator:^13.0.2
 flutter pub add --dev hive_generator build_runner
 
 # Generate ulang lib/models/item_model.g.dart
@@ -75,7 +75,17 @@ git push -u origin main
   - **SharedPreferences**: simpan data ringan key-value (`setBool`, `setString`, `getBool`, `getString`, `remove`) untuk session login & username.
   - **Hive**: database NoSQL lokal untuk list objek (`Hive.initFlutter()`, `Hive.registerAdapter()`, `Hive.openBox<T>()`, CRUD: `add`, `put`, `getAt`, `putAt`, `delete`, `deleteAt`).
 - **Modul 7 (Notification & LBS)**:
-  - **Notification**: `flutter_local_notifications` (`show` untuk immediate, `zonedSchedule` + `timezone` untuk scheduled). Wajib **desugaring** di `android/app/build.gradle.kts` & **permissions + 3 `<receiver>`** di `AndroidManifest.xml` (hal. 131–132).
+  - **Notification**: `flutter_local_notifications` (`show` untuk immediate, `zonedSchedule` + `timezone` untuk scheduled). Wajib **desugaring** di `android/app/build.gradle.kts` & **permissions + 3 `<receiver>`** di `AndroidManifest.xml` (hal. 131–132):
+    ```kotlin
+    // android/app/build.gradle.kts
+    compileOptions {
+        isCoreLibraryDesugaringEnabled = true
+        // ...
+    }
+    dependencies {
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
+    }
+    ```
   - **LBS**: `geolocator` (`isLocationServiceEnabled`, `checkPermission`, `requestPermission`, `getCurrentPosition`, `distanceBetween`). Wajib `ACCESS_FINE_LOCATION` & `ACCESS_COARSE_LOCATION` di `AndroidManifest.xml` (hal. 142).
 - **Modul 8 (GetX)**:
   - **State**: `.obs` + `Obx(() => ...)` + `GetxController` (`onInit`, `onReady`, `onClose`).

@@ -3,7 +3,7 @@ import '../controllers/auth_controller.dart';
 import '../controllers/detail_controller.dart';
 import '../controllers/favorite_controller.dart';
 import '../controllers/home_controller.dart';
-import '../controllers/lbs_notif_controller.dart';
+// import '../controllers/lbs_notif_controller.dart';
 import '../controllers/root_controller.dart';
 import '../views/detail_page.dart';
 import '../views/login_page.dart';
@@ -30,7 +30,7 @@ class RootBinding extends Bindings {
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<FavoriteController>(() => FavoriteController());
     // Modul 7 (hanya di-init saat LbsNotifPage dibuka)
-    Get.lazyPut<LbsNotifController>(() => LbsNotifController());
+    // Get.lazyPut<LbsNotifController>(() => LbsNotifController());
   }
 }
 
