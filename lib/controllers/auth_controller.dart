@@ -46,6 +46,7 @@ class AuthController extends GetxController {
       _username.value = user;
       await AuthService.saveLogin(user);
       Get.offAllNamed(AppRoutes.root);
+      Get.snackbar('Berhasil', 'Login berhasil', backgroundColor: Colors.green, colorText: Colors.white);
     } else {
       _isLoginFailed.value = true;
       Get.snackbar('Login Gagal', 'Username atau password salah', backgroundColor: Colors.red, colorText: Colors.white);
@@ -69,5 +70,6 @@ class AuthController extends GetxController {
     await AuthService.logout();
     _username.value = '';
     Get.offAllNamed(AppRoutes.login);
+    Get.snackbar('Logout', 'Berhasil keluar', backgroundColor: Colors.orange, colorText: Colors.white);
   }
 }
