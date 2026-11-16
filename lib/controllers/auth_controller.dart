@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../routes/app_routes.dart';
 import '../services/auth_service.dart';
@@ -47,7 +48,7 @@ class AuthController extends GetxController {
       Get.offAllNamed(AppRoutes.root);
     } else {
       _isLoginFailed.value = true;
-      Get.snackbar('Login Gagal', 'Username atau password salah');
+      Get.snackbar('Login Gagal', 'Username atau password salah', backgroundColor: Colors.red, colorText: Colors.white);
     }
   }
 
@@ -56,12 +57,12 @@ class AuthController extends GetxController {
     final user = inputUser.trim();
     final pass = inputPass.trim();
     if (user.isEmpty || pass.isEmpty) {
-      Get.snackbar('Gagal', 'Username dan password wajib diisi');
+      Get.snackbar('Gagal', 'Username dan password wajib diisi', backgroundColor: Colors.red, colorText: Colors.white);
       return;
     }
     await AuthService.registerUser(user, pass);
     Get.back(); // Kembali ke LoginPage
-    Get.snackbar('Berhasil', 'Akun terdaftar, silakan login');
+    Get.snackbar('Berhasil', 'Akun terdaftar, silakan login', backgroundColor: Colors.green, colorText: Colors.white);
   }
 
   Future<void> logout() async {

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/item_model.dart';
 import '../services/api_service.dart';
@@ -39,7 +40,7 @@ class HomeController extends GetxController {
       final data = await ApiService.fetchItems();
       _items.assignAll(data);
     } catch (e) {
-      Get.snackbar('Error', e.toString());
+      Get.snackbar('Error', e.toString(), backgroundColor: Colors.red, colorText: Colors.white);
     } finally {
       _isLoading.value = false;
     }

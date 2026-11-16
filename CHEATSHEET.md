@@ -96,6 +96,7 @@ git push -u origin main
   - **State**: `.obs` + `Obx(() => ...)` + `GetxController` (`onInit`, `onReady`, `onClose`).
   - **DI**: `Bindings` (`Get.lazyPut` / `Get.put`) + `Get.find<Controller>()`.
   - **Routing**: `GetMaterialApp`, `GetPage`, `Get.toNamed`, `Get.offAllNamed`, `Get.back`, `Get.arguments`.
+  - **Snackbar**: `Get.snackbar('Judul', 'Pesan', backgroundColor: Colors.red, colorText: Colors.white)` (butuh `import 'package:flutter/material.dart';`).
 
 ---
 

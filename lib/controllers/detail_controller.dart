@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/item_model.dart';
 import '../services/api_service.dart';
@@ -26,7 +27,7 @@ class DetailController extends GetxController {
       _isLoading.value = true;
       _item.value = await ApiService.fetchItemDetail(id);
     } catch (e) {
-      Get.snackbar('Error', e.toString());
+      Get.snackbar('Error', e.toString(), backgroundColor: Colors.red, colorText: Colors.white);
     } finally {
       _isLoading.value = false;
     }
