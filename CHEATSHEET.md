@@ -89,7 +89,23 @@ git push -u origin main
     ```xml
     <!-- android/app/src/main/AndroidManifest.xml (di atas <application>) -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- Di dalam <application> (untuk Scheduled Notification): -->
+    <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"/>
+    <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+        </intent-filter>
+    </receiver>
+    <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsReceiver"/>
     ```
   - **LBS**: `geolocator` (`isLocationServiceEnabled`, `checkPermission`, `requestPermission`, `getCurrentPosition`, `distanceBetween`). Wajib `ACCESS_FINE_LOCATION` & `ACCESS_COARSE_LOCATION` di `AndroidManifest.xml` (hal. 142).
 - **Modul 8 (GetX)**:
