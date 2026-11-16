@@ -25,6 +25,15 @@ class LoginPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Icon(Icons.movie, size: 64, color: Colors.redAccent),
+              // [GANTI GAMBAR] Comment Icon di atas, lalu uncomment salah satu:
+              // 1) Gambar lokal: buat folder `assets/images/`, taruh file, lalu daftarkan di pubspec.yaml:
+              //    flutter:
+              //      assets:
+              //        - assets/images/logo.png
+              //    Setelah itu `flutter pub get`, lalu pakai:
+              // Image.asset('assets/images/logo.png', height: 80),
+              // 2) Gambar dari URL:
+              // Image.network('https://example.com/logo.png', height: 80),
               const SizedBox(height: 12),
               const Text(
                 'App Title',
