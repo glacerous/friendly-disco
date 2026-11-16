@@ -86,6 +86,11 @@ git push -u origin main
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
     }
     ```
+    ```xml
+    <!-- android/app/src/main/AndroidManifest.xml (di atas <application>) -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    ```
   - **LBS**: `geolocator` (`isLocationServiceEnabled`, `checkPermission`, `requestPermission`, `getCurrentPosition`, `distanceBetween`). Wajib `ACCESS_FINE_LOCATION` & `ACCESS_COARSE_LOCATION` di `AndroidManifest.xml` (hal. 142).
 - **Modul 8 (GetX)**:
   - **State**: `.obs` + `Obx(() => ...)` + `GetxController` (`onInit`, `onReady`, `onClose`).
