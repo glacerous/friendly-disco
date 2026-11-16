@@ -32,6 +32,10 @@ class DetailPage extends StatelessWidget {
                       width: double.infinity,
                       height: 300,
                       fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const SizedBox(
+                        height: 300,
+                        child: Center(child: Icon(Icons.broken_image, size: 64)),
+                      ),
                     )
                   : const SizedBox(
                       height: 200,

@@ -29,7 +29,12 @@ class FavoritePage extends StatelessWidget {
               child: ListTile(
                 onTap: () => Get.toNamed(AppRoutes.detail, arguments: item.id),
                 leading: item.image.isNotEmpty
-                    ? Image.network(item.image, width: 50, fit: BoxFit.cover)
+                    ? Image.network(
+                        item.image,
+                        width: 50,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => const Icon(Icons.broken_image),
+                      )
                     : const Icon(Icons.image),
                 title: Text(item.title),
                 subtitle: Text('⭐ ${item.rating}'),

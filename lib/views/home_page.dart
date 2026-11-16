@@ -59,6 +59,8 @@ class HomePage extends StatelessWidget {
                                       item.image,
                                       width: double.infinity,
                                       fit: BoxFit.cover,
+                                      errorBuilder: (_, __, ___) => const Center(
+                                          child: Icon(Icons.broken_image, size: 48)),
                                     )
                                   : const Center(
                                       child: Icon(Icons.image, size: 48)),
