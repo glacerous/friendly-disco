@@ -106,6 +106,30 @@ class HomePage extends StatelessWidget {
                     );
                   },
                 );
+                // [ENABLE LIST VIEW] Comment GridView.builder di atas, lalu uncomment ListView.builder di bawah untuk tampilan list memanjang (Card + ListTile):
+                // return ListView.builder(
+                //   itemCount: controller.items.length,
+                //   itemBuilder: (context, index) {
+                //     final item = controller.items[index];
+                //     return Card(
+                //       margin: const EdgeInsets.only(bottom: 8),
+                //       child: ListTile(
+                //         onTap: () => Get.toNamed(AppRoutes.detail, arguments: item.id),
+                //         leading: item.image.isNotEmpty
+                //             ? Image.network(
+                //                 item.image,
+                //                 width: 72,
+                //                 height: 56,
+                //                 fit: BoxFit.cover,
+                //                 errorBuilder: (_, __, ___) => const Icon(Icons.broken_image),
+                //               )
+                //             : const Icon(Icons.image),
+                //         title: Text(item.title, maxLines: 2, overflow: TextOverflow.ellipsis),
+                //         subtitle: Text('⭐ ${item.rating}'),
+                //       ),
+                //     );
+                //   },
+                // );
               }),
             ),
           ],
