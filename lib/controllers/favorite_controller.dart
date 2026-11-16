@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import '../models/item_model.dart';
@@ -28,14 +29,20 @@ class FavoriteController extends GetxController {
   Future<void> toggleFavorite(ItemModel item) async {
     if (_box.containsKey(item.id)) {
       await _box.delete(item.id);
+      // [SNACKBAR] Comment baris di bawah jika mau disable snackbar (uncomment untuk enable)
+      Get.snackbar('Dihapus', '${item.title} dihapus dari favorit', backgroundColor: Colors.red, colorText: Colors.white);
     } else {
       await _box.put(item.id, item);
+      // [SNACKBAR] Comment baris di bawah jika mau disable snackbar (uncomment untuk enable)
+      Get.snackbar('Favorit', '${item.title} ditambahkan ke favorit', backgroundColor: Colors.green, colorText: Colors.white);
     }
     loadFavorites();
   }
 
   Future<void> removeAt(int index) async {
     await _box.deleteAt(index);
+    // [SNACKBAR] Comment baris di bawah jika mau disable snackbar (uncomment untuk enable)
+    Get.snackbar('Dihapus', 'Item dihapus dari favorit', backgroundColor: Colors.red, colorText: Colors.white);
     loadFavorites();
   }
 }
