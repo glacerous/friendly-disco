@@ -19,6 +19,10 @@ class DetailController extends GetxController {
   void onInit() {
     super.onInit();
     final int id = Get.arguments as int;
+    // [ENABLE MULTI-ARGUMENTS] Jika kirim Map (Modul 8 hal. 164):
+    // Get.toNamed(AppRoutes.detail, arguments: {'id': item.id, 'fromFav': true});
+    // final args = Get.arguments as Map<String, dynamic>;
+    // final int id = args['id'] as int;
     fetchDetail(id);
   }
 

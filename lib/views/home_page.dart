@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
+// [ENABLE APPBAR BADGE] Uncomment import di bawah jika mau tampilkan badge jumlah favorit di AppBar:
+// import '../controllers/favorite_controller.dart';
 import '../routes/app_routes.dart';
 
 // =============================================================================
@@ -15,7 +17,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Daftar Item')),
+      appBar: AppBar(
+        title: const Text('Daftar Item'),
+        // [ENABLE APPBAR BADGE] Uncomment actions di bawah untuk badge angka di AppBar (Modul 8 hal. 180):
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: Obx(() => Badge(
+        //           label: Text('${Get.find<FavoriteController>().favorites.length}'),
+        //           child: const Icon(Icons.favorite),
+        //         )),
+        //   ),
+        // ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
