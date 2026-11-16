@@ -12,11 +12,18 @@ class HomeController extends GetxController {
   final RxList<ItemModel> _items = <ItemModel>[].obs;
   final RxBool _isLoading = false.obs;
   final RxString _searchQuery = ''.obs;
+  // [ENABLE FILTER] Uncomment baris di bawah jika soal butuh filter pill/kategori:
+  // final RxString selectedCategory = 'All'.obs;
+  // void filterCategory(String cat) => selectedCategory.value = cat;
 
   bool get isLoading => _isLoading.value;
 
   // Otomatis filter berdasarkan _searchQuery (kalau kosong, kembalikan semua)
   List<ItemModel> get items {
+    // [ENABLE FILTER] Uncomment & sesuaikan field (mis. e.newsSite == selectedCategory.value):
+    // if (selectedCategory.value != 'All') {
+    //   return _items.where((e) => e.genres.contains(selectedCategory.value)).toList();
+    // }
     if (_searchQuery.value.isEmpty) return _items;
     return _items
         .where((e) =>

@@ -30,6 +30,23 @@ class HomePage extends StatelessWidget {
             //   ),
             // ),
             // const SizedBox(height: 12),
+            // [ENABLE FILTER PILL] Uncomment blok di bawah (+ [ENABLE FILTER] di HomeController) untuk pill ChoiceChip horizontal:
+            // Obx(() => SingleChildScrollView(
+            //       scrollDirection: Axis.horizontal,
+            //       child: Row(
+            //         children: ['All', 'NASA', 'SpaceNews', 'Arstechnica']
+            //             .map((cat) => Padding(
+            //                   padding: const EdgeInsets.only(right: 8),
+            //                   child: ChoiceChip(
+            //                     label: Text(cat),
+            //                     selected: controller.selectedCategory.value == cat,
+            //                     onSelected: (_) => controller.filterCategory(cat),
+            //                   ),
+            //                 ))
+            //             .toList(),
+            //       ),
+            //     )),
+            // const SizedBox(height: 12),
             Expanded(
               child: Obx(() {
                 if (controller.isLoading) {
