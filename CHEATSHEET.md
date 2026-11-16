@@ -12,7 +12,7 @@ flutter create nama_project
 
 # Tambah package per kelompok modul (supaya gampang copy per kebutuhan)
 flutter pub add get http shared_preferences hive hive_flutter
-flutter pub add flutter_local_notifications timezone geolocator
+flutter pub add flutter_local_notifications:^19.0.0 timezone:^0.10.0 geolocator:^13.0.0
 flutter pub add --dev hive_generator build_runner
 
 # Generate ulang lib/models/item_model.g.dart
