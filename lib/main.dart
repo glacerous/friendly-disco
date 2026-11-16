@@ -33,7 +33,18 @@ class MainApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Responsi Template',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        // [THEME] Ubah warna AppBar & BottomNavBar global di sini:
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.blueGrey,
+          foregroundColor: Colors.white,
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.black87,
+          selectedItemColor: Colors.redAccent,
+          unselectedItemColor: Colors.grey,
+        ),
+      ),
       initialRoute: AppRoutes.login,
       getPages: AppPages.routes,
     );

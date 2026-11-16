@@ -31,7 +31,10 @@ class RootPage extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: controller.selectedIndex.value,
-            selectedItemColor: Colors.redAccent,
+            // Warna NavBar diatur di main.dart (bottomNavigationBarTheme), atau override di sini:
+            // backgroundColor: Colors.black87,
+            // selectedItemColor: Colors.redAccent,
+            // unselectedItemColor: Colors.grey,
             onTap: controller.changeTab,
             items: const [
               BottomNavigationBarItem(
