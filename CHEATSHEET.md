@@ -53,7 +53,10 @@ git push -u origin main
    - Sesuaikan syarat username & password di `login()`.
 5. **Edit `lib/views/`**:
    - Sesuaikan label teks & field yang ditampilkan di `home_page.dart`, `detail_page.dart`, `favorite_page.dart`, `profile_page.dart`.
-   - Jika soal **tidak pakai Modul 7 (Notif/LBS)**, hapus tab `LbsNotifPage()` di `root_page.dart` dan `NotificationService().init()` di `main.dart`.
+   - **Toggle Fitur Opsional (`Ctrl + Shift + F`)**:
+     - **`[ENABLE MODUL 7]`** (Notif & LBS): uncomment di `lib/main.dart` & `lib/views/root_page.dart`.
+     - **`[ENABLE REGISTER]`** (Register akun lokal): uncomment di `lib/controllers/auth_controller.dart` & `lib/views/login_page.dart`.
+     - **`[ENABLE SEARCH]`** (Search bar di Home): uncomment di `lib/views/home_page.dart`.
 
 ---
 

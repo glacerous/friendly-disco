@@ -3,13 +3,12 @@ import 'package:get/get.dart';
 import '../controllers/root_controller.dart';
 import 'favorite_page.dart';
 import 'home_page.dart';
-import 'lbs_notif_page.dart';
 import 'profile_page.dart';
+// [ENABLE MODUL 7] Uncomment import + tab LbsNotifPage di bawah jika soal pakai Notif/LBS:
+// import 'lbs_notif_page.dart';
 
 // =============================================================================
 // ROOT PAGE - BOTTOM NAVIGATION BAR (Modul 4 hal. 66-67, Modul 8 hal. 179)
-// CARA SWAP SAAT RESPONSI:
-// Hapus tab LbsNotifPage() & BottomNavigationBarItem-nya jika soal tidak pakai Modul 7.
 // =============================================================================
 
 class RootPage extends StatelessWidget {
@@ -20,7 +19,8 @@ class RootPage extends StatelessWidget {
   final List<Widget> _pages = [
     HomePage(),
     FavoritePage(),
-    LbsNotifPage(), // Modul 7 (opsional: hapus jika tidak dibutuhkan)
+    // [ENABLE MODUL 7] Uncomment baris ini:
+    // LbsNotifPage(),
     ProfilePage(),
   ];
 
@@ -42,10 +42,11 @@ class RootPage extends StatelessWidget {
                 icon: Icon(Icons.favorite),
                 label: 'Favorit',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.notifications_active),
-                label: 'Notif/LBS',
-              ),
+              // [ENABLE MODUL 7] Uncomment item tab ini:
+              // BottomNavigationBarItem(
+              //   icon: Icon(Icons.notifications_active),
+              //   label: 'Notif/LBS',
+              // ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
                 label: 'Profil',

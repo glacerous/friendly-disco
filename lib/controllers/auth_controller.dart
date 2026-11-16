@@ -5,7 +5,8 @@ import '../services/auth_service.dart';
 // =============================================================================
 // AUTH CONTROLLER (Modul 8 hal. 159, 162 & Modul 6 hal. 112-113, 119)
 // CARA SWAP SAAT RESPONSI:
-// Ubah syarat username & password di fungsi login() sesuai ketentuan soal.
+// - Default: login hardcode ('124240018' / '123').
+// - Jika soal pakai Register: cari [ENABLE REGISTER] dan uncomment di bawah.
 // =============================================================================
 
 class AuthController extends GetxController {
@@ -33,8 +34,13 @@ class AuthController extends GetxController {
     final user = inputUser.trim();
     final pass = inputPass.trim();
 
-    // Ganti kredensial ini sesuai soal responsi
-    if (user == '124240018' && pass == '123') {
+    // [DEFAULT] Login hardcode sesuai NIM & password soal:
+    final bool isValid = (user == '124240018' && pass == '123');
+
+    // [ENABLE REGISTER] Comment baris `isValid` di atas, lalu uncomment baris ini:
+    // final bool isValid = await AuthService.validateRegistered(user, pass);
+
+    if (isValid) {
       _isLoginFailed.value = false;
       _username.value = user;
       await AuthService.saveLogin(user);
@@ -43,6 +49,19 @@ class AuthController extends GetxController {
       _isLoginFailed.value = true;
       Get.snackbar('Login Gagal', 'Username atau password salah');
     }
+  }
+
+  // [REGISTER FEATURE] Dipanggil dari RegisterPage
+  Future<void> register(String inputUser, String inputPass) async {
+    final user = inputUser.trim();
+    final pass = inputPass.trim();
+    if (user.isEmpty || pass.isEmpty) {
+      Get.snackbar('Gagal', 'Username dan password wajib diisi');
+      return;
+    }
+    await AuthService.registerUser(user, pass);
+    Get.back(); // Kembali ke LoginPage
+    Get.snackbar('Berhasil', 'Akun terdaftar, silakan login');
   }
 
   Future<void> logout() async {

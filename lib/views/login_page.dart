@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
+// [ENABLE REGISTER] Uncomment import app_routes.dart jika pakai Register:
+// import '../routes/app_routes.dart';
 
 // =============================================================================
 // LOGIN PAGE (Modul 3 hal. 57, Modul 6 hal. 110-111, Modul 8 hal. 157, 179)
@@ -79,6 +81,11 @@ class LoginPage extends StatelessWidget {
                   child: const Text('Login'),
                 ),
               ),
+              // [ENABLE REGISTER] Uncomment tombol di bawah untuk menuju RegisterPage:
+              // TextButton(
+              //   onPressed: () => Get.toNamed(AppRoutes.register),
+              //   child: const Text('Belum punya akun? Daftar'),
+              // ),
             ],
           ),
         ),

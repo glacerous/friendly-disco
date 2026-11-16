@@ -7,6 +7,7 @@ import '../controllers/lbs_notif_controller.dart';
 import '../controllers/root_controller.dart';
 import '../views/detail_page.dart';
 import '../views/login_page.dart';
+import '../views/register_page.dart';
 import '../views/root_page.dart';
 import 'app_routes.dart';
 
@@ -28,7 +29,7 @@ class RootBinding extends Bindings {
     Get.lazyPut<RootController>(() => RootController());
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<FavoriteController>(() => FavoriteController());
-    // Modul 7 (hapus/abaikan jika soal tidak pakai Notif/LBS)
+    // Modul 7 (hanya di-init saat LbsNotifPage dibuka)
     Get.lazyPut<LbsNotifController>(() => LbsNotifController());
   }
 }
@@ -46,6 +47,10 @@ class AppPages {
       name: AppRoutes.login,
       page: () => LoginPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => RegisterPage(),
     ),
     GetPage(
       name: AppRoutes.root,

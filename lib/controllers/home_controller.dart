@@ -4,14 +4,28 @@ import '../services/api_service.dart';
 
 // =============================================================================
 // HOME CONTROLLER (Modul 8 hal. 170 & Modul 5 hal. 91)
+// Sudah siap Search lokal (tidak aktif sampai [ENABLE SEARCH] di-uncomment di HomePage).
 // =============================================================================
 
 class HomeController extends GetxController {
   final RxList<ItemModel> _items = <ItemModel>[].obs;
   final RxBool _isLoading = false.obs;
+  final RxString _searchQuery = ''.obs;
 
-  List<ItemModel> get items => _items;
   bool get isLoading => _isLoading.value;
+
+  // Otomatis filter berdasarkan _searchQuery (kalau kosong, kembalikan semua)
+  List<ItemModel> get items {
+    if (_searchQuery.value.isEmpty) return _items;
+    return _items
+        .where((e) =>
+            e.title.toLowerCase().contains(_searchQuery.value.toLowerCase()))
+        .toList();
+  }
+
+  void search(String query) {
+    _searchQuery.value = query.trim();
+  }
 
   @override
   void onInit() {
