@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// [ENABLE BUKA WEB] Jalankan `flutter pub add url_launcher`, lalu uncomment:
+// import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import '../controllers/detail_controller.dart';
 import '../controllers/favorite_controller.dart';
@@ -97,6 +99,19 @@ class DetailPage extends StatelessWidget {
           ),
         );
       }),
+      // [ENABLE BUKA WEB] Uncomment FloatingActionButton di bawah (pastikan ItemModel punya field `url`):
+      // floatingActionButton: Obx(() {
+      //   final item = controller.item;
+      //   if (item == null || item.url.isEmpty) return const SizedBox.shrink();
+      //   return FloatingActionButton(
+      //     tooltip: 'Buka Web',
+      //     onPressed: () => launchUrl(
+      //       Uri.parse(item.url),
+      //       mode: LaunchMode.externalApplication,
+      //     ),
+      //     child: const Icon(Icons.open_in_new),
+      //   );
+      // }),
     );
   }
 }
